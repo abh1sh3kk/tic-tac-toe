@@ -1,0 +1,55 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+* {
+	/* --main-background-color: #dff6e1; */
+	--main-background-color: white;
+	--title-color: #474545;
+}
+@font-face {
+	font-family: "HelloTropical";
+	src: url(./font/HelloTropical.ttf) format("woff2");
+}
+body {
+	background-color: var(--main-background-color);
+	font-family: "HelloTropical";
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+h1 {
+	text-align: center;
+	padding: 1.8rem;
+	color: var(--title-color);
+}
+.grid-container {
+	display: flex;
+	justify-content: center;
+	/* border: 2px solid grey; */
+	padding: 1rem;
+}
+.grid-cells {
+	height: 6rem;
+	width: 6rem;
+	margin: 0.3rem;
+
+	font-size: 5rem;
+
+	user-select: none;
+
+
+	box-shadow: 4px 6px 12px -3px rgba(0,0,0,0.57);
+	-webkit-box-shadow: 4px 6px 12px -3px rgba(0,0,0,0.57);
+	-moz-box-shadow: 4px 6px 12px -3px rgba(0,0,0,0.57);
+
+
+	display: grid;
+	place-items: center;	
+}
+.grid-row {
+	display: flex;
+}
