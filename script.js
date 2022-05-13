@@ -117,9 +117,6 @@ function gameDrawRituals() {
 	playerTwoScore.classList.add("player-draw");
   trophyForOne.classList.remove("hidden"); // remove hidden == make it visible
   trophyForTwo.classList.remove("hidden"); // remove hidden == make it visible
-
-
-
 	// gameOverRituals();
 }
 function isGridFull() {
