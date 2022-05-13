@@ -8,9 +8,16 @@
 	<link rel="stylesheet" href="style.css">
 	<script src="script.js" defer></script>
 	<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1427/1427673.png" type="image/x-icon">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 	<h1><span class="title">Tic Tac Toe</span></h1>
+	<div class="players">
+		<div class="player-1 player-score"><span class="trophy"></span> Player One</div>
+		<div class="player-2 player-score"><span class="trophy"></span> Player Two</div>
+		<!-- <div class="player-1 player-score"><span class="trophy"><i class="fa-solid fa-trophy"></i></span> Player One</div>
+		<div class="player-2 player-score"><span class="trophy"><i class="fa-solid fa-trophy"></i></span> Player Two</div> -->
+	</div>
 	<div class="grid-container">
 		<div class="grid__intact">
 			<div class="grid__one grid-row">
@@ -30,6 +37,10 @@
 			</div>
 		</div>
 
+		
+	</div>
+	<div class="play-again__container">
+		<button class="play-again">Play Again?</button>
 	</div>
 </body>
 </html>
