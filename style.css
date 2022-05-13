@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 	text-decoration: none;
 	list-style-type: none;
+	user-select: none;
 }
 
 * {
@@ -42,6 +43,7 @@ body {
 	width: 25rem;
 	margin: auto;
 	gap: 0.5rem;
+	
 }
 .player-score {
 	border-radius: 2rem;
@@ -61,7 +63,7 @@ h1 {
 	text-align: center;
 	padding: 1.8rem;
 	color: var(--title-color);
-	user-select: none;
+	
 }
 .grid-container {
 	/* border: 2px solid grey; */
@@ -80,7 +82,7 @@ h1 {
 
 	font-size: 5rem;
 
-	user-select: none;
+	
 
 
 	box-shadow: 4px 3px 7px -3px rgba(0,0,0,0.57);
@@ -111,9 +113,6 @@ button {
 	border-radius: 0.7rem;
 	background-color: transparent;
 	transition: transform 0.6s ease-in-out; 
-}
-.play-again {
-	/* visibility: hidden; */
 }
 .play-again:hover{
 	transform: scale(1.3);
