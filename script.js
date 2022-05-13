@@ -1,7 +1,8 @@
 let playAgainButton = document.querySelector(".play-again");
 let playerOneScore = document.querySelector(".player-1");
 let playerTwoScore = document.querySelector(".player-2");
-let trophyIcon = document.querySelector(".trophy");
+let trophyForTwo= document.querySelector(".trophy2");
+let trophyForOne = document.querySelector(".trophy1");
 let cells = document.querySelectorAll(".grid-cells");
 let gameRunningFlag = false;
 //Factory Function
@@ -78,11 +79,13 @@ function gameStartRituals() {
   playerOneScore.classList.add("player-active");
   playerOneScore.classList.remove("player-winner");
   playerOneScore.classList.remove("player-draw");
-
-// player two reset
+  trophyForOne.classList.add("hidden");
+  
+  // player two reset
   playerTwoScore.classList.remove("player-active");
   playerTwoScore.classList.remove("player-winner");
   playerTwoScore.classList.remove("player-draw");
+  trophyForTwo.classList.add("hidden");
 
 
 // hide the playAgain button
@@ -98,20 +101,22 @@ function gameOverRituals() {
 	if (currentPlayer == playerOne) {
 		console.log("Player 1 won the match");
 		playerOneScore.classList.add("player-winner");
+    trophyForOne.classList.remove("hidden"); // remove hidden == make it visible
 		playerTwoScore.classList.remove("player-active");
 	}
 	if (currentPlayer == playerTwo) {
 		console.log("Player 2 won the match");
 		playerTwoScore.classList.add("player-winner");
+    trophyForTwo.classList.remove("hidden"); // remove hidden == make it visible
 		playerOneScore.classList.remove("player-active");
 	}
 }
 function gameDrawRituals() {
-	console.log("The game is draw");
-	// playAgainButton.style.visibility = "visible";
 
 	playerOneScore.classList.add("player-draw");
 	playerTwoScore.classList.add("player-draw");
+  trophyForOne.classList.remove("hidden"); // remove hidden == make it visible
+  trophyForTwo.classList.remove("hidden"); // remove hidden == make it visible
 
 
 
