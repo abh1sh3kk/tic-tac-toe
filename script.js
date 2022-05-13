@@ -18,15 +18,15 @@ PlayerGenerator.prototype.checkForGameOver = function () {
 
   for (let winningArray of winningSets) {
     for (let winningElement of winningArray) {
-      if (latestPlayer.choices.includes(winningElement)) {
+      if (currentPlayer.choices.includes(winningElement)) {
         flag = 1;
         // console.log(
-        //   `Yes ${winningElement} is present in ${latestPlayer.choices}`
+        //   `Yes ${winningElement} is present in ${currentPlayer.choices}`
         // );
       } else {
         flag = 0;
         // console.log(
-        //   `No ${winningElement} is not present in ${latestPlayer.choices}`
+        //   `No ${winningElement} is not present in ${currentPlayer.choices}`
         // );
         break;
       }
@@ -42,22 +42,22 @@ PlayerGenerator.prototype.checkForGameOver = function () {
 };
 
 // so that game starts from O instead of X
-let latestPlayer = playerTwo;
+let currentPlayer = playerOne;
 
 function togglePlayerTurn() {
-  if (latestPlayer == playerOne) {
-	latestPlayer = playerTwo;
-	playerOneScore.classList.add("player-active");
-	playerTwoScore.classList.remove("player-active");
-} else {
-	latestPlayer = playerOne;
+  if (currentPlayer == playerOne) {
+	currentPlayer = playerTwo;
 	playerTwoScore.classList.add("player-active");
 	playerOneScore.classList.remove("player-active");
+} else {
+	currentPlayer = playerOne;
+	playerOneScore.classList.add("player-active");
+	playerTwoScore.classList.remove("player-active");
   }
 }
 function respectivePlayerSign() {
-  if (latestPlayer == playerOne) return playerTwo.sign;
-  else if (latestPlayer == playerTwo) return playerOne.sign;
+  if (currentPlayer == playerOne) return playerOne.sign;
+  else if (currentPlayer == playerTwo) return playerTwo.sign;
 }
 function gameStartRituals() {
 
@@ -69,7 +69,7 @@ function gameStartRituals() {
 //   reset choices 
   playerOne.choices = [];
   playerTwo.choices = [];
-  latestPlayer = playerTwo;
+  currentPlayer = playerOne;
 
 
 // reset the color that represents player's turn
@@ -91,16 +91,16 @@ function gameStartRituals() {
   gameRunningFlag = true;
 }
 function gameOverRituals() {
-	console.log(latestPlayer.sign + " is the winner");
+	console.log(currentPlayer.sign + " is the winner");
 	// playAgainButton.style.visibility = "visible";
 	gameRunningFlag = false;
 	
-	if (latestPlayer == playerOne) {
+	if (currentPlayer == playerOne) {
 		console.log("Player 1 won the match");
 		playerOneScore.classList.add("player-winner");
 		playerTwoScore.classList.remove("player-active");
 	}
-	if (latestPlayer == playerTwo) {
+	if (currentPlayer == playerTwo) {
 		console.log("Player 2 won the match");
 		playerTwoScore.classList.add("player-winner");
 		playerOneScore.classList.remove("player-active");
@@ -133,18 +133,21 @@ function gameRound() {
 			if (e.target.textContent == "" && gameRunningFlag) {
 				// playAgainButton.style.visibility = "hidden";
 				e.target.textContent = respectivePlayerSign();
-				togglePlayerTurn();
-				latestPlayer.choices.push(+e.target.getAttribute("data-cell"));
+				currentPlayer.choices.push(+e.target.getAttribute("data-cell"));
 				console.clear();
-
-				if (latestPlayer.checkForGameOver()) {
-					gameOverRituals();
+        
+        // game over check
+				if (currentPlayer.checkForGameOver()) {
+          gameOverRituals();
 					return;
 				}
-
+        
+        // draw check
 				if (isGridFull()) {
-					gameDrawRituals();
+          gameDrawRituals();
 				};
+
+        togglePlayerTurn();
 			}
 		});
 	}
